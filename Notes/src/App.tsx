@@ -1,3 +1,7 @@
+import { Route, Routes } from "react-router-dom";
+
+import CreateNotes from "./createNotes";
+import EditNotes from "./editNotes";
 import Notes from "./notes";
 
 function App() {
@@ -38,7 +42,16 @@ function App() {
       creationDate: "dd/mm/aaaa",
     },
   ];
-  return <Notes notes={notes} />;
+  return (
+    <main>
+      <Routes>
+        <Route path="/notes" element={<Notes notes={notes} />} />
+        <Route path="/edit-note/:id" element={<EditNotes />} />
+        <Route path="/create-note" element={<CreateNotes />} />
+        <Route path="*" element={<h1>🫥 404 🫥</h1>} />
+      </Routes>
+    </main>
+  );
 }
 
 export default App;
