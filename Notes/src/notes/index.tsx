@@ -1,3 +1,4 @@
+import NavigationBar from "../navigationBar";
 import RowNotes from "../rowNotes";
 import type { NotesProps } from "./types";
 
@@ -27,6 +28,7 @@ const Notes = ({ notes }: NotesProps) => {
 
   return (
     <div>
+      <NavigationBar />
       {matrix.map((note) => {
         return <RowNotes columns={note}></RowNotes>;
       })}
