@@ -4,7 +4,6 @@ const Styled = {
   Title: styled.div`
     font-size: 20px;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    margin-bottom: 5px;
   `,
   Text: styled.div`
     font-size: 14px;
@@ -24,12 +23,29 @@ const Styled = {
     gap: 5px;
   `,
   Note: styled.div<{ $color: string }>`
-    border: solid 1px lightgrey;
     padding: 15px;
-    border-radius: 10px 0px 10px 0px;
-    width: 200px;
-    height: 150px;
+    padding-top: 10px;
+    border-radius: 0px 0px 10px 10px;
+    width: 198px;
+    height: 120px;
     margin-bottom: 5px;
+    border-bottom: solid 7px lightgrey;
+    border-left: solid 2px lightgrey;
+    border-right: solid 2px lightgrey;
+    border-top: none;
+    ${(props) => {
+      if (props.$color) {
+        return `border-color:${props.$color}`;
+      }
+    }}
+  `,
+  NoteHead: styled.div<{ $color: string }>`
+    padding: 15px;
+    border-radius: 10px 10px 0px 0px;
+    width: 202px;
+    height: 15px;
+    align-items: center;
+    display: flex;
     ${(props) => {
       if (props.$color) {
         return `background-color:${props.$color}`;
