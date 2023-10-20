@@ -16,8 +16,10 @@ const ThumbnailNote = ({ note }: ThumbnailNoteProps) => {
 
   return (
     <Styled.NoteContainer>
-      <Styled.Note $color={note.color}>
+      <Styled.NoteHead $color={note.color}>
         <Styled.Title>{note.title}</Styled.Title>
+      </Styled.NoteHead>
+      <Styled.Note $color={note.color}>
         <Styled.Text>{note.text}</Styled.Text>
       </Styled.Note>
       <Styled.Buttons>
@@ -25,6 +27,7 @@ const ThumbnailNote = ({ note }: ThumbnailNoteProps) => {
           icon={<FontAwesomeIcon icon={faPen} />}
           onClick={handelClickEditNote}
         ></Button>
+
         <Button icon={<FontAwesomeIcon icon={faTrash} />}></Button>
       </Styled.Buttons>
     </Styled.NoteContainer>
