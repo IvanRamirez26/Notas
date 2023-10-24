@@ -1,9 +1,12 @@
-import NavigationBar from "../navigationBar";
-import RowNotes from "../rowNotes";
-import type { NotesProps } from "./types";
+import { useLocalStorageState } from "ahooks";
 
-const Notes = ({ notes }: NotesProps) => {
-  const matrix = notes.reduce(
+import NavigationBar from "../navigationBar";
+import { notesDataType } from "../notes/types";
+import RowNotes from "../rowNotes";
+
+const Notes = () => {
+  const [notes] = useLocalStorageState<notesDataType[]>("notes");
+  const matrix = notes?.reduce(
     (
       accumulator: {
         id: string;
@@ -29,7 +32,7 @@ const Notes = ({ notes }: NotesProps) => {
   return (
     <div>
       <NavigationBar />
-      {matrix.map((note) => {
+      {matrix?.map((note) => {
         return <RowNotes columns={note}></RowNotes>;
       })}
     </div>

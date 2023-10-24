@@ -1,8 +1,10 @@
+import { useLocalStorageState } from "ahooks";
 import { Route, Routes } from "react-router-dom";
 
 import CreateNotes from "./createNotes";
 import EditNotes from "./editNotes";
 import Notes from "./notes";
+import { notesDataType } from "./notes/types";
 
 function App() {
   const notes = [
@@ -42,10 +44,14 @@ function App() {
       creationDate: "dd/mm/aaaa",
     },
   ];
+  const [myNotes] = useLocalStorageState<notesDataType[]>("notes", {
+    defaultValue: notes,
+  });
+
   return (
     <main>
       <Routes>
-        <Route path="/notes" element={<Notes notes={notes} />} />
+        <Route path="/notes" element={<Notes />} />
         <Route path="/edit-note/:id" element={<EditNotes />} />
         <Route path="/create-note" element={<CreateNotes />} />
         <Route path="*" element={<h1>🫥 404 🫥</h1>} />
