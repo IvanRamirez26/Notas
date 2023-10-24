@@ -9212,6 +9212,11 @@ text-table@^0.2.0, text-table@~0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==
 
+tg-use-local-storage-state@^16.0.3:
+  version "16.0.3"
+  resolved "https://registry.yarnpkg.com/tg-use-local-storage-state/-/tg-use-local-storage-state-16.0.3.tgz#a5b2b4ad690b8bbd8c33b4520ce0539997f8e909"
+  integrity sha512-q5IXfOVxOZ9ikYr2iDffzPhF9JHnYifLjC9mIbp6JzjNm94ITbGDg8ay/oZyK2mCg2dQGC0ItWbSBjsdY1RUqA==
+
 throat@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-5.0.0.tgz#c5199235803aad18754a667d659b5e72ce16764b"

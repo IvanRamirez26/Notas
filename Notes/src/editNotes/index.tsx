@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
+import { useLocalStorageState } from "ahooks";
 import { Button, ColorPicker, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { Link, useParams } from "react-router-dom";
@@ -12,15 +13,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { notesDataType } from "../notes/types";
 import Styled from "./styles";
 
 const EditNotes = () => {
   const { id } = useParams();
   console.log(id);
   const [open, setOpen] = useState(false);
-  const [textInput, setTextInput] = useState("");
+  const [textInput, setTextInput] = useState("st");
   const [textArea, setTextArea] = useState("");
   const [colorNote, setColorNote] = useState<string>("#ffffff");
+  const [myNotes] = useLocalStorageState<notesDataType[]>("notes");
+  console.log("edit 27", myNotes);
+
+  useEffect(() => {
+    if (myNotes) {
+      console.log(myNotes.find((note) => note.id == id));
+    }
+  }, [id, myNotes]);
 
   const handelClickSave = () => {
     setTextInput("");
@@ -29,12 +39,6 @@ const EditNotes = () => {
     console.log(textInput);
     console.log(textArea);
     console.log(`${colorNote}`);
-  };
-
-  const handelChange = () => {
-    setTextInput("");
-    setTextArea("");
-    setColorNote("#ffffff");
   };
 
   return (
@@ -96,7 +100,6 @@ const EditNotes = () => {
             <Button
               icon={<FontAwesomeIcon icon={faFloppyDisk} />}
               onClick={handelClickSave}
-              onChange={handelChange}
             >
               Save Changes
             </Button>
