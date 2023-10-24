@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useLocalStorageState } from "ahooks";
 import { Button, ColorPicker, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { DownOutlined } from "@ant-design/icons";
 import {
@@ -20,25 +20,38 @@ const EditNotes = () => {
   const { id } = useParams();
   console.log(id);
   const [open, setOpen] = useState(false);
-  const [textInput, setTextInput] = useState("st");
+  const [textInput, setTextInput] = useState("");
   const [textArea, setTextArea] = useState("");
   const [colorNote, setColorNote] = useState<string>("#ffffff");
-  const [myNotes] = useLocalStorageState<notesDataType[]>("notes");
-  console.log("edit 27", myNotes);
-
+  const [myNotes, setMyNotes] = useLocalStorageState<notesDataType[]>("notes");
+  const history = useNavigate();
   useEffect(() => {
     if (myNotes) {
-      console.log(myNotes.find((note) => note.id == id));
+      const a = myNotes.find((note) => note.id == id);
+      setTextInput(a?.title || "");
+      setTextArea(a?.text || "");
+      setColorNote(a?.color || "");
     }
   }, [id, myNotes]);
 
   const handelClickSave = () => {
+    history("/notes/");
     setTextInput("");
     setTextArea("");
     setColorNote("#ffffff");
-    console.log(textInput);
-    console.log(textArea);
-    console.log(`${colorNote}`);
+    setMyNotes(
+      myNotes?.map((note) => {
+        if (note.id == id) {
+          return {
+            ...note,
+            title: textInput,
+            text: textArea,
+            color: colorNote,
+          };
+        }
+        return note;
+      })
+    );
   };
 
   return (
@@ -64,7 +77,6 @@ const EditNotes = () => {
           <Input
             style={{ backgroundColor: "transparent", fontWeight: "bold" }}
             onChange={(e) => setTextInput(e.target.value)}
-            type="text"
             placeholder="Edit your title :)"
             value={textInput}
           />
