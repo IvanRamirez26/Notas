@@ -22,7 +22,3 @@ const NavigationBar = () => {
   );
 };
 export default NavigationBar;
-
-/*<Button>
-<Link to="/edit-note">Edit Notes </Link>
-</Button>*/

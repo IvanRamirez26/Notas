@@ -18,7 +18,7 @@ import Styled from "./styles";
 
 const EditNotes = () => {
   const { id } = useParams();
-  console.log(id);
+  //console.log(id);
   const [open, setOpen] = useState(false);
   const [textInput, setTextInput] = useState("");
   const [textArea, setTextArea] = useState("");
@@ -27,7 +27,10 @@ const EditNotes = () => {
   const history = useNavigate();
   useEffect(() => {
     if (myNotes) {
-      const a = myNotes.find((note) => note.id == id);
+      // esto combierte el id de string a number para poderla usar
+      const numberId = Number(id);
+      //                            aqui se usa
+      const a = myNotes.find((note) => note.id == numberId);
       setTextInput(a?.title || "");
       setTextArea(a?.text || "");
       setColorNote(a?.color || "");
@@ -35,13 +38,14 @@ const EditNotes = () => {
   }, [id, myNotes]);
 
   const handelClickSave = () => {
+    const numberId = Number(id);
     history("/notes/");
     setTextInput("");
     setTextArea("");
     setColorNote("#ffffff");
     setMyNotes(
       myNotes?.map((note) => {
-        if (note.id == id) {
+        if (note.id == numberId) {
           return {
             ...note,
             title: textInput,
