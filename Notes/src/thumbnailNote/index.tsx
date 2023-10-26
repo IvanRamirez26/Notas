@@ -1,13 +1,14 @@
-import { Button } from "antd";
+import { Button, Popconfirm } from "antd";
 import { useNavigate } from "react-router-dom";
 
+import { QuestionCircleOutlined } from "@ant-design/icons";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Styled from "./styles";
 import type { ThumbnailNoteProps } from "./types";
 
-const ThumbnailNote = ({ note }: ThumbnailNoteProps) => {
+const ThumbnailNote = ({ note, onDelete }: ThumbnailNoteProps) => {
   const history = useNavigate();
   const handelClickEditNote = () => {
     history("/edit-note/" + note.id);
@@ -27,8 +28,16 @@ const ThumbnailNote = ({ note }: ThumbnailNoteProps) => {
           icon={<FontAwesomeIcon icon={faPen} />}
           onClick={handelClickEditNote}
         ></Button>
-
-        <Button icon={<FontAwesomeIcon icon={faTrash} />}></Button>
+        <Popconfirm
+          placement="rightTop"
+          title="Delete the note"
+          description="Are you sure to delete this note?"
+          icon={<QuestionCircleOutlined style={{ color: "red" }} />}
+          //forma de mandar el id a la funcion
+          onConfirm={() => onDelete(note.id)}
+        >
+          <Button icon={<FontAwesomeIcon icon={faTrash} />}></Button>
+        </Popconfirm>
       </Styled.Buttons>
     </Styled.NoteContainer>
   );

@@ -9,6 +9,8 @@ const Styled = {
     font-size: 14px;
     color: gray;
     font-family: "Arial Narrow", Arial, sans-serif;
+    display: contents;
+    flex-wrap: wrap;
   `,
   NoteContainer: styled.div`
     display: flex;

@@ -5,7 +5,7 @@ import { notesDataType } from "../notes/types";
 import RowNotes from "../rowNotes";
 
 const Notes = () => {
-  const [notes] = useLocalStorageState<notesDataType[]>("notes");
+  const [notes, setNotes] = useLocalStorageState<notesDataType[]>("notes");
   const matrix = notes?.reduce(
     (
       accumulator: {
@@ -28,12 +28,22 @@ const Notes = () => {
     },
     []
   );
+  const handelClickDelete = (id: number) => {
+    console.log(id);
+    const deleteNotes = notes?.filter((note) => {
+      return note.id !== id;
+    });
+
+    setNotes(deleteNotes);
+  };
 
   return (
     <div>
       <NavigationBar />
       {matrix?.map((note) => {
-        return <RowNotes columns={note}></RowNotes>;
+        return (
+          <RowNotes onDelete={handelClickDelete} columns={note}></RowNotes>
+        );
       })}
     </div>
   );

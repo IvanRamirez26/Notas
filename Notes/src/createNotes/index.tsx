@@ -26,7 +26,7 @@ const CreateNotes = () => {
 
   const handelClickCreate = () => {
     history("/notes/");
-    const id = Math.random();
+    const id = Math.floor(Math.random() * 100);
     const newNote = {
       title: textInput,
       text: textArea,
