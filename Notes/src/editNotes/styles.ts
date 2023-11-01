@@ -27,6 +27,7 @@ const Styled = {
     gap: 5px;
     margin-top: 25px;
     font-weight: "bold";
+    border-color: white;
   `,
   TextArea: styled.div`
     width: 350px;
@@ -36,6 +37,7 @@ const Styled = {
     gap: 5px;
     margin-bottom: 25px;
     font-weight: "bold";
+    border-color: "white";
   `,
   Label: styled.div`
     font-weight: bold;

@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { DownOutlined } from "@ant-design/icons";
 import {
-  faNewspaper,
+  faFloppyDisk,
   faNoteSticky,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
@@ -23,6 +23,14 @@ const CreateNotes = () => {
   const [textArea, setTextArea] = useState<string>("");
   const [myNotes, setMyNotes] = useLocalStorageState<notesDataType[]>("notes");
   const history = useNavigate();
+  const [currentDate] = useState(getDate());
+  function getDate() {
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const year = today.getFullYear();
+    const date = today.getDate();
+    return `${month}/${date}/${year}`;
+  }
 
   const handelClickCreate = () => {
     history("/notes/");
@@ -31,7 +39,7 @@ const CreateNotes = () => {
       title: textInput,
       text: textArea,
       color: colorNote,
-      creationDate: "",
+      creationDate: currentDate,
       id: id,
     };
     setMyNotes([newNote, ...(myNotes || [])]);
@@ -40,7 +48,7 @@ const CreateNotes = () => {
     setColorNote("#ffffff");
   };
   return (
-    <div>
+    <div style={{ paddingTop: "10px", paddingLeft: "50px" }}>
       <Link to="/notes">
         <Button icon={<FontAwesomeIcon icon={faXmark} />}>Cancel </Button>
       </Link>
@@ -63,7 +71,7 @@ const CreateNotes = () => {
             placeholder="Your title :)"
             value={textInput}
             onChange={(e) => setTextInput(e.target.value)}
-            style={{ backgroundColor: "transparent" }}
+            style={{ backgroundColor: "transparent", fontWeight: "bold" }}
           />
         </Styled.Input>
         <Styled.TextArea>
@@ -95,7 +103,7 @@ const CreateNotes = () => {
           />
           <Styled.Button>
             <Button
-              icon={<FontAwesomeIcon icon={faNewspaper} />}
+              icon={<FontAwesomeIcon icon={faFloppyDisk} />}
               onClick={handelClickCreate}
             >
               Save

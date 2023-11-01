@@ -59,7 +59,7 @@ const EditNotes = () => {
   };
 
   return (
-    <div>
+    <div style={{ paddingTop: "10px", paddingLeft: "50px" }}>
       <Link to="/notes">
         <Button icon={<FontAwesomeIcon icon={faXmark} />}>Cancel </Button>
       </Link>
@@ -76,7 +76,7 @@ const EditNotes = () => {
           Edit Form
           {<FontAwesomeIcon icon={faNoteSticky} />}
         </h2>
-        <Styled.Input>
+        <Styled.Input style={{ height: "auto" }}>
           <Styled.Label>Title:</Styled.Label>
           <Input
             style={{ backgroundColor: "transparent", fontWeight: "bold" }}
