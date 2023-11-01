@@ -41,8 +41,7 @@ const Notes = () => {
   };
 
   const handleSortingChange = (value: string) => {
-    const saveValue = value;
-    setSelectOption(saveValue);
+    setSelectOption(value);
     setNotes(orderBy(notes, [value]));
   };
 

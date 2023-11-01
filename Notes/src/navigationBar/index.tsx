@@ -18,16 +18,13 @@ const NavigationBar = ({
 }: NavigationBarProps) => (
   <>
     <Styled.NavBar>
-      <div style={{ gap: "5px", display: "flex" }}>
-        <Link to="/create-note">
-          <Button icon={<FontAwesomeIcon icon={faPlus} />}>Create Note</Button>
-        </Link>
-      </div>
-      <div style={{ gap: "5px", display: "flex" }}>
+      <Link to="/create-note">
+        <Button icon={<FontAwesomeIcon icon={faPlus} />}>Create Note</Button>
+      </Link>
+      <Styled.Container>
         <Select
           onChange={onSortingChange}
           placeholder="Sort by"
-          style={{ width: 120 }}
           options={[
             { value: "title", label: "Title" },
             { value: "text", label: "Text" },
@@ -40,19 +37,13 @@ const NavigationBar = ({
           onClick={onOrderClick}
           icon={
             orderState === "desc" ? (
-              <FontAwesomeIcon
-                icon={faArrowDownAZ}
-                style={{ fontSize: "17px" }}
-              />
+              <FontAwesomeIcon icon={faArrowDownAZ} />
             ) : (
-              <FontAwesomeIcon
-                icon={faArrowDownZA}
-                style={{ fontSize: "17px" }}
-              />
+              <FontAwesomeIcon icon={faArrowDownZA} />
             )
           }
         />
-      </div>
+      </Styled.Container>
     </Styled.NavBar>
   </>
 );

@@ -23,7 +23,7 @@ const CreateNotes = () => {
   const [textArea, setTextArea] = useState<string>("");
   const [myNotes, setMyNotes] = useLocalStorageState<notesDataType[]>("notes");
   const history = useNavigate();
-  const [currentDate] = useState(getDate());
+  const currentDate = getDate();
   function getDate() {
     const today = new Date();
     const month = today.getMonth() + 1;
@@ -48,36 +48,26 @@ const CreateNotes = () => {
     setColorNote("#ffffff");
   };
   return (
-    <div style={{ paddingTop: "10px", paddingLeft: "50px" }}>
+    <Styled.Container>
       <Link to="/notes">
         <Button icon={<FontAwesomeIcon icon={faXmark} />}>Cancel </Button>
       </Link>
       <Styled.EditForm $color={colorNote}>
-        <h2
-          style={{
-            margin: "0px",
-            gap: "10px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          Create Note
+        <Styled.H2>
+          <span>Create Note</span>
           {<FontAwesomeIcon icon={faNoteSticky} />}
-        </h2>
+        </Styled.H2>
         <Styled.Input>
           <Styled.Label>Title:</Styled.Label>
           <Input
             placeholder="Your title :)"
             value={textInput}
             onChange={(e) => setTextInput(e.target.value)}
-            style={{ backgroundColor: "transparent", fontWeight: "bold" }}
           />
         </Styled.Input>
         <Styled.TextArea>
           <Styled.Label>Text:</Styled.Label>
           <TextArea
-            style={{ backgroundColor: "transparent" }}
             placeholder="The body of your note :)"
             value={textArea}
             onChange={(e) => setTextArea(e.target.value)}
@@ -111,7 +101,7 @@ const CreateNotes = () => {
           </Styled.Button>
         </Styled.Footer>
       </Styled.EditForm>
-    </div>
+    </Styled.Container>
   );
 };
 export default CreateNotes;
