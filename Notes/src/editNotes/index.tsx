@@ -18,7 +18,6 @@ import Styled from "./styles";
 
 const EditNotes = () => {
   const { id } = useParams();
-  //console.log(id);
   const [open, setOpen] = useState(false);
   const [textInput, setTextInput] = useState("");
   const [textArea, setTextArea] = useState("");
@@ -59,27 +58,18 @@ const EditNotes = () => {
   };
 
   return (
-    <div>
+    <Styled.Container>
       <Link to="/notes">
         <Button icon={<FontAwesomeIcon icon={faXmark} />}>Cancel </Button>
       </Link>
       <Styled.EditForm $color={colorNote}>
-        <h2
-          style={{
-            margin: "0px",
-            gap: "10px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          Edit Form
+        <Styled.H2>
+          <span>Create Note</span>
           {<FontAwesomeIcon icon={faNoteSticky} />}
-        </h2>
+        </Styled.H2>
         <Styled.Input>
           <Styled.Label>Title:</Styled.Label>
           <Input
-            style={{ backgroundColor: "transparent", fontWeight: "bold" }}
             onChange={(e) => setTextInput(e.target.value)}
             placeholder="Edit your title :)"
             value={textInput}
@@ -88,7 +78,6 @@ const EditNotes = () => {
         <Styled.TextArea>
           <Styled.Label>Text:</Styled.Label>
           <TextArea
-            style={{ backgroundColor: "transparent" }}
             onChange={(e) => setTextArea(e.target.value)}
             placeholder="Edit the body of your note :)"
             value={textArea}
@@ -122,7 +111,7 @@ const EditNotes = () => {
           </Styled.Button>
         </Styled.Footer>
       </Styled.EditForm>
-    </div>
+    </Styled.Container>
   );
 };
 export default EditNotes;

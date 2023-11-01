@@ -22,21 +22,25 @@ const ThumbnailNote = ({ note, onDelete }: ThumbnailNoteProps) => {
       </Styled.NoteHead>
       <Styled.Note $color={note.color}>
         <Styled.Text>{note.text}</Styled.Text>
+        <Styled.P>Creation Date: {note.creationDate}</Styled.P>
       </Styled.Note>
       <Styled.Buttons>
         <Button
           icon={<FontAwesomeIcon icon={faPen} />}
           onClick={handelClickEditNote}
+          className="custom-button2"
         ></Button>
         <Popconfirm
           placement="rightTop"
           title="Delete the note"
           description="Are you sure to delete this note?"
           icon={<QuestionCircleOutlined style={{ color: "red" }} />}
-          //forma de mandar el id a la funcion
           onConfirm={() => onDelete(note.id)}
         >
-          <Button icon={<FontAwesomeIcon icon={faTrash} />}></Button>
+          <Button
+            icon={<FontAwesomeIcon icon={faTrash} />}
+            className="custom-button"
+          ></Button>
         </Popconfirm>
       </Styled.Buttons>
     </Styled.NoteContainer>

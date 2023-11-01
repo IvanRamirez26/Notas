@@ -1,6 +1,18 @@
 import styled from "styled-components";
 
 const Styled = {
+  Container: styled.div`
+    padding-top: 10px;
+    padding-left: 50px;
+  `,
+  H2: styled.div`
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+  `,
   EditForm: styled.div<{ $color: string }>`
     border: solid 1px lightgrey;
     border-radius: 20px;
@@ -27,6 +39,10 @@ const Styled = {
     gap: 5px;
     margin-top: 25px;
     font-weight: "bold";
+    .ant-input {
+      background-color: transparent;
+      font-weight: bold;
+    }
   `,
   TextArea: styled.div`
     width: 350px;
@@ -35,7 +51,9 @@ const Styled = {
     justify-content: center;
     gap: 5px;
     margin-bottom: 25px;
-    font-weight: "bold";
+    .ant-input {
+      background-color: transparent;
+    }
   `,
   Label: styled.div`
     font-weight: bold;
