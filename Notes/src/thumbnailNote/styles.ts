@@ -9,6 +9,8 @@ const Styled = {
     font-size: 14px;
     color: gray;
     font-family: "Arial Narrow", Arial, sans-serif;
+    display: contents;
+    flex-wrap: wrap;
   `,
   NoteContainer: styled.div`
     display: flex;
@@ -21,13 +23,26 @@ const Styled = {
     display: flex;
     flex-direction: row;
     gap: 5px;
+
+    .custom-button:hover {
+      background-color: #cf112d;
+    }
+    .custom-button2:hover {
+      background-color: #76b9ff;
+    }
+    :where(.css-dev-only-do-not-override-3mqfnx).ant-btn-default:not(
+        :disabled
+      ):not(.ant-btn-disabled):hover {
+      color: #fff;
+      border-color: #fff;
+    }
   `,
   Note: styled.div<{ $color: string }>`
     padding: 15px;
     padding-top: 10px;
     border-radius: 0px 0px 10px 10px;
-    width: 198px;
-    height: 120px;
+    width: 251px; //198px;
+    height: auto;
     margin-bottom: 5px;
     border-bottom: solid 7px lightgrey;
     border-left: solid 2px lightgrey;
@@ -42,8 +57,8 @@ const Styled = {
   NoteHead: styled.div<{ $color: string }>`
     padding: 15px;
     border-radius: 10px 10px 0px 0px;
-    width: 202px;
-    height: 15px;
+    width: 255px; //302px;
+    height: auto;
     align-items: center;
     display: flex;
     ${(props) => {
@@ -51,6 +66,13 @@ const Styled = {
         return `background-color:${props.$color}`;
       }
     }}
+  `,
+  P: styled.div`
+    color: lightgrey;
+    display: flex;
+    align-self: flex-end;
+    margin-top: 15px;
+    margin-bottom: 0px;
   `,
 };
 export default Styled;
