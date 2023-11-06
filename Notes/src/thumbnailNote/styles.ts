@@ -23,7 +23,6 @@ const Styled = {
     display: flex;
     flex-direction: row;
     gap: 5px;
-
     .custom-button:hover {
       background-color: #cf112d;
     }
@@ -35,6 +34,13 @@ const Styled = {
       ):not(.ant-btn-disabled):hover {
       color: #fff;
       border-color: #fff;
+    }
+    .ant-btn {
+      width: 30px;
+      align-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   `,
   Note: styled.div<{ $color: string }>`

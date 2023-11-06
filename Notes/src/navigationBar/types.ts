@@ -3,4 +3,6 @@ export type NavigationBarProps = {
   onSortingChange: (e: any) => void;
   onOrderClick: (e: any) => void;
   orderState: string;
+  onSearch: () => void;
+  setSearchText: (e: string) => void;
 };

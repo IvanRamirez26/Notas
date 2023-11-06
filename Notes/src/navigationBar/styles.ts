@@ -12,10 +12,17 @@ const Styled = {
     gap: 5px;
     display: flex;
     .ant-select-single {
-      width: 120px;
+      width: 130px;
     }
     .ant-btn .ant-btn-icon {
       font-size: 17px;
+    }
+    .ant-btn {
+      width: 50px;
+      align-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   `,
 };
