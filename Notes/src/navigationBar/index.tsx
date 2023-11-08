@@ -16,7 +16,8 @@ const NavigationBar = ({
   onOrderClick,
   orderState,
   onSearch,
-  setSearchText,
+  //setSearchText,
+  onChange,
 }: NavigationBarProps) => {
   const { Search } = Input;
 
@@ -29,7 +30,8 @@ const NavigationBar = ({
         <Search
           placeholder="Search"
           onSearch={onSearch}
-          onChange={(e) => setSearchText(e.target.value)}
+          onChange={onChange}
+          //onChange={(e) => setSearchText(e.target.value)}
           enterButton
           allowClear
         />

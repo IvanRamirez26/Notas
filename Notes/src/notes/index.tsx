@@ -7,6 +7,13 @@ import NavigationBar from "../navigationBar";
 import { notesDataType } from "../notes/types";
 import RowNotes from "../rowNotes";
 
+/**
+yarn add react-quill
+ * 
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+ */
+
 const Notes = () => {
   const [notes, setNotes] = useLocalStorageState<notesDataType[]>("notes");
   const [searchResults, setSearchResults] = useState<notesDataType[]>([]); // notas que coinciden
@@ -62,10 +69,10 @@ const Notes = () => {
     setNotes(orderBy(notes, [selectOption], orderState));
   };
 
-  const handleSearch = () => {
-    console.log("searchText", searchText);
+  const handleSearch = (value: string) => {
+    console.log("searchText", value);
     console.log("searchResult", searchResults);
-    if (searchText) {
+    if (value) {
       const searchNotes = notesToSearch?.filter((note) =>
         note.title.toLowerCase().includes(searchText.toLowerCase())
       );
@@ -74,10 +81,14 @@ const Notes = () => {
       setSearchResults(notes || []);
     }
   };
+  const handleChange = (e: any) => {
+    setSearchText(e.target.value);
+  };
 
   return (
     <div>
       <NavigationBar
+        onChange={handleChange}
         onSortingChange={handleSortingChange}
         onOrderClick={handleOrderClick}
         orderState={orderState}

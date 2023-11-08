@@ -42,6 +42,7 @@ const Styled = {
     .ant-input {
       background-color: transparent;
       font-weight: bold;
+      border: lightgrey solid 2px;
     }
   `,
   TextArea: styled.div`
@@ -53,6 +54,7 @@ const Styled = {
     margin-bottom: 25px;
     .ant-input {
       background-color: transparent;
+      border: lightgrey solid 2px;
     }
   `,
   Label: styled.div`

@@ -8,7 +8,7 @@ const RowNotes = ({ columns, onDelete }: RowNotesProps) => {
     <Row>
       {columns.map((column) => {
         return (
-          <Col xs={24} sm={24} md={12} lg={6} xl={6} key={column.id}>
+          <Col xs={24} sm={24} md={12} lg={12} xl={6} key={column.id}>
             <ThumbnailNote onDelete={onDelete} note={column}></ThumbnailNote>
           </Col>
         );
