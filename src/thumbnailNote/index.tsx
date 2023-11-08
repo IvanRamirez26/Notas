@@ -1,4 +1,4 @@
-import { Button, Popconfirm } from "antd";
+import { Button, Popconfirm, Tooltip } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import { QuestionCircleOutlined } from "@ant-design/icons";
@@ -17,13 +17,18 @@ const ThumbnailNote = ({ note, onDelete }: ThumbnailNoteProps) => {
 
   return (
     <Styled.NoteContainer>
-      <Styled.NoteHead $color={note.color}>
-        <Styled.Title>{note.title}</Styled.Title>
-      </Styled.NoteHead>
-      <Styled.Note $color={note.color}>
-        <Styled.Text>{note.text}</Styled.Text>
-        <Styled.P>Creation Date: {note.creationDate}</Styled.P>
-      </Styled.Note>
+      <Styled.Wrapper>
+        <Tooltip placement="rightTop" title={note.title}>
+          <Styled.NoteHead $color={note.color}>
+            <Styled.Title>{note.title}</Styled.Title>
+          </Styled.NoteHead>
+        </Tooltip>
+        <Styled.Note $color={note.color}>
+          <Styled.Text>
+            {note.text} <Styled.P>Creation Date: {note.creationDate}</Styled.P>
+          </Styled.Text>
+        </Styled.Note>
+      </Styled.Wrapper>
       <Styled.Buttons>
         <Button
           icon={<FontAwesomeIcon icon={faPen} />}

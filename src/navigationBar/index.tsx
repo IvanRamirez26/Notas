@@ -1,4 +1,4 @@
-import { Button, Select } from "antd";
+import { Button, Input, Select } from "antd";
 import { Link } from "react-router-dom";
 
 import {
@@ -15,13 +15,24 @@ const NavigationBar = ({
   onSortingChange,
   onOrderClick,
   orderState,
-}: NavigationBarProps) => (
-  <>
+  onSearch,
+  setSearchText,
+}: NavigationBarProps) => {
+  const { Search } = Input;
+
+  return (
     <Styled.NavBar>
       <Link to="/create-note">
         <Button icon={<FontAwesomeIcon icon={faPlus} />}>Create Note</Button>
       </Link>
       <Styled.Container>
+        <Search
+          placeholder="Search"
+          onSearch={onSearch}
+          onChange={(e) => setSearchText(e.target.value)}
+          enterButton
+          allowClear
+        />
         <Select
           onChange={onSortingChange}
           placeholder="Sort by"
@@ -31,7 +42,6 @@ const NavigationBar = ({
             { value: "creationDate", label: "Creation Date" },
           ]}
         ></Select>
-
         <Button
           type="text"
           onClick={onOrderClick}
@@ -45,6 +55,6 @@ const NavigationBar = ({
         />
       </Styled.Container>
     </Styled.NavBar>
-  </>
-);
+  );
+};
 export default NavigationBar;

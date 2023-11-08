@@ -38,8 +38,10 @@ const Styled = {
     align-items: center;
     gap: 5px;
     margin-top: 25px;
-    font-weight: "bold";
+    border-color: white;
+    height: auto;
     .ant-input {
+      border: white solid 2px;
       background-color: transparent;
       font-weight: bold;
     }
@@ -53,6 +55,7 @@ const Styled = {
     margin-bottom: 25px;
     .ant-input {
       background-color: transparent;
+      border: white solid 2px;
     }
   `,
   Label: styled.div`

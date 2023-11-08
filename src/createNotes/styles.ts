@@ -38,11 +38,11 @@ const Styled = {
     align-items: center;
     gap: 5px;
     margin-top: 25px;
-    border-color: white;
-    height: auto;
+    font-weight: "bold";
     .ant-input {
       background-color: transparent;
       font-weight: bold;
+      border: lightgrey solid 2px;
     }
   `,
   TextArea: styled.div`
@@ -54,7 +54,7 @@ const Styled = {
     margin-bottom: 25px;
     .ant-input {
       background-color: transparent;
-      border-color: "white";
+      border: lightgrey solid 2px;
     }
   `,
   Label: styled.div`
